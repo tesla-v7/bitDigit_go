@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	//"strings"
+	"strings"
 	"time"
 )
 
@@ -65,10 +65,10 @@ var bigDigit = map[string][]string{
 		"    "},
 }
 
-func TimeTrack(start time.Time) {
+func TimeTrack(start time.Time)time.Duration {
 	timeRun := time.Since(start)
-	fmt.Print("run time: ", timeRun, "\n")
-
+	return timeRun + 0
+	// fmt.Print("run time: ", timeRun, "\n")
 }
 
 func main() {
@@ -76,9 +76,9 @@ func main() {
 		os.Exit(1)
 	}
 	defer TimeTrack(time.Now())
-	// fmt.Print(os.Args[1])
+
 	var result [5]string
-	repetition := 10000
+	repetition := 1
 	for i := 0; i < repetition; i++ {
 		//result = [5]string{"", "", "", "", ""}
 		for _, dig := range os.Args[1] {
@@ -97,7 +97,7 @@ func main() {
 		}
 	}
 
-	//fmt.Println(strings.Join(result[:], "\n"))
+	fmt.Println(strings.Join(result[:], "\n"))
 
 	//for _, line :=range result{
 	//	fmt.Println(len(line))
